@@ -131,7 +131,7 @@ class BossTile(MapTile):
 			player.hp = player.hp - self.enemy.damage
 			print(" Enemy does {} damage. You have {} Healthpoints remaining! \n".format(self.enemy.damage, player.hp))
 		else:
-			print(player.hp)
+			print(" Current Healthpoints: " + str(player.hp) + "\n")
 
 
 class TrapTile(MapTile):
