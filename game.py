@@ -1,22 +1,15 @@
+# Main script which runs the whole game, cudos to Book: "Make Your Own Python Text Adventure" (2018)
+# Player is initialized here and all possible interactions are defined
+# World DSL is parsed and initiated
+
 from collections import OrderedDict
 from player import Player
 import world
 # import os
-# import termios
-# import tty
 # import sys
 
-# class color:
-#    PURPLE = '\033[95m'
-#    CYAN = '\033[96m'
-#    DARKCYAN = '\033[36m'
-#    BLUE = '\033[94m'
-GREEN = '\033[92m'
-YELLOW = '\033[93m'
-#    RED = '\033[91m'
-#    UNDERLINE = '\033[4m'
-   
 
+YELLOW = '\033[93m'
 BOLD = '\033[1m'
 END = '\033[0m'
 

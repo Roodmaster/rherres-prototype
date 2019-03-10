@@ -1,3 +1,5 @@
+# Script which defines mainclass Enemy and different subclasses which can be initialized in world.py
+
 class Enemy:
 	def __init__(self):
 		raise NotImplementedError("Do not create raw Enemy objects!")

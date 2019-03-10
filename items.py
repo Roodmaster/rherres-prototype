@@ -1,3 +1,5 @@
+# Script which defines mainclass Weapon as well as Consumable and different subclasses which can be initialized elsewhere
+
 class Weapon:
 	def __init__(self):
 		raise NotImplementedError("Do not create raw Weapon objects.")
@@ -39,7 +41,6 @@ class Consumable:
 
 
 class Apple(Consumable):
-	"""docstring for SpaceApple"""
 	def __init__(self):
 		self.name = "Apple"
 		self.healing_value = 10

@@ -1,7 +1,12 @@
+# Mainclass Player, which is initialized in game.py
+# Most Functions are called in world.py
+# I updated a lot of Functions with \n in order to get some space between the lines
+
 import items
 import world
 import world_building
 
+# Dirty trick to be able to swap Player(x, y) from the Start Tile to Interactive Docu and back 
 returnFromDoku = world_building.idoku
 
 BOLD = '\033[1m'
@@ -18,6 +23,7 @@ class Player:
 		self.atStart = False
 		self.atIDoku = False
 
+	# Showstopper
 	def is_alive(self):
 		return self.hp > 0
 
@@ -43,6 +49,7 @@ class Player:
 		valid = False
 		while not valid:
 			choice = input("")
+			# It wasn't possible to cancel healing before
 			if choice == "cancel" or "Cancel":
 				valid = True
 			try:
@@ -73,10 +80,12 @@ class Player:
 		self.x += dx
 		self.y += dy
 
+	# Added to be able to jump to iDocu
 	def jumpTo(self, dx, dy):
 		self.x = 0
 		self.y = 0
 
+	# Added to be able to return from iDocu
 	def crouchTo(self, dx, dy):
 		self.x = returnFromDoku
 		self.y = 2
@@ -93,9 +102,11 @@ class Player:
 	def move_west(self):
 		self.move(dx = -1, dy = 0)
 
+	# Moves -2 on the y-axis instead of -1
 	def jump(self):
 		self.jumpTo(dx = 0, dy = -2)
 
+	# Moves +2 on the y-axis instead of +1
 	def crouch(self):
 		self.crouchTo(dx = 0, dy = + 2)
 

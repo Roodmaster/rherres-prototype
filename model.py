@@ -1,3 +1,6 @@
+# Machine Learning-Model, which was created here: https://github.com/sherjilozair/char-rnn-tensorflow
+# Script is used in this prototype in its original state
+
 import tensorflow as tf
 from tensorflow.contrib import rnn
 from tensorflow.contrib import legacy_seq2seq

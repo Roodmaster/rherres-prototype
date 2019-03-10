@@ -1,3 +1,5 @@
+# Machine Learning-Model, which was created here: https://github.com/sherjilozair/char-rnn-tensorflow
+# Script is used in this prototype in a modified state, so it is only loaded once upon game start and can therefor farely quickly generate new text
 #!/usr/bin/env python
 
 from __future__ import print_function

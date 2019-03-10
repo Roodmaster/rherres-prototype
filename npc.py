@@ -1,3 +1,6 @@
+# Script which defines mainclass NPC and different subclasses which can be initialized in world.py
+# Itself initializes subclasses of Items
+
 import items
 
 

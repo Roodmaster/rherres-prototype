@@ -6,9 +6,10 @@ rows = 12
 rooms_vis = []
 rooms_filled = []
 s = np.random.choice(cols)
+# More dirty tricks
 idoku = s
 
-
+# To grids are created, one to make sure the world has the right structure, the other to fill it with life
 def worldlists():
 	for y in range(rows):
 		rooms_vis.append([])
@@ -29,16 +30,17 @@ worldlists()
 # print(rooms_vis)
 # print(rooms_filled)
 
-
+# Wayfinder will always start in the 3rd row, since the 1st one is used as the iDocu and the 2nd to wall the latter off
+# Wayfinder alternates the position in the 3rd row each time the game is started
 def wayfinder():
 	keepgoing = True
 	y = 2
 	x = s
-	#idoku = s
+	# S is used twice, once as a variable to randomize the start position and once to mark the spot in rooms_vis
 	rooms_vis[y][x] = 's'
 	d = np.random.choice(3)
-	#print(x, d)
-
+	# Until wayfinder reaches the last row, it can change the direction (0 = left, 1 = right, 2 = down) at each new tile
+	# but doesn't backtrack in the same row! The path is marked in rooms_vis with o's. Z's mark the later Victory Tiles
 	while keepgoing:
 		if d == 0:
 			if x == 0:
@@ -98,6 +100,8 @@ def wayfinder():
 
 wayfinder()
 
+# Rooms on the found way cannot be dead (0), instead have Enemies(3), Traps(4), NPCs(5) or Stories(2)
+# Rooms on the rest of the grid can be dead, but cannot be stories
 def worldfiller():
 	for y in range(rows):
 		for x in range(cols):
@@ -125,6 +129,7 @@ def worldfiller():
 
 worldfiller()
 
+# Making sure that the start(1) is always surrounded by stories and the end(9) always by boss monsters (8)
 def set_start_end():
 	for y in range(rows):
 		for x in range(cols):
@@ -158,7 +163,7 @@ set_start_end()
 	# 8 = 'BO' (Boss Enemy Tile)
 	# 9 = 'VT' (Victory Tile)
 
-
+# The filled wordmap is converted to a string which can then be parsed by the World DSL in world.py
 def worldbuilder():
 	mystring = ''
 	for y in range(rows):

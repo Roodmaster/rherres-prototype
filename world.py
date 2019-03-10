@@ -1,3 +1,5 @@
+# Where most of the magic happens
+# I updated a lot of Functions with \n in order to get some space between the lines
 #!/usr/local/bin/python
 # coding: latin-1
 import os, sys
@@ -6,6 +8,8 @@ import enemies
 import npc
 import world_building
 from sample import sample
+
+# Another dirty trick to modify the sample.py input (ref: Line 71)
 chapter = 0
 
 BOLD = '\033[1m'
@@ -44,6 +48,7 @@ class StartTile(MapTile):
 		"""
 
 	def modify_player(self, player):
+		# Important to not have "j" displayed as possible action all the time, ref to game.py
 		player.atStart = True
 		player.atIDoku = False
 
@@ -60,6 +65,8 @@ class StoryTile(MapTile):
 		player.atStart = False
 
 	def intro_text(self):
+		# By adding this I was able to make rooms have a constant, generated intro-text 
+		# as well as have the model input be Chapter 1, Chapter 2, Chapter 3 etc
 		if not self.visited:
 				global chapter
 				chapter += 1
@@ -105,6 +112,7 @@ class EnemyTile(MapTile):
 			player.hp = player.hp - self.enemy.damage
 			print(" Enemy does {} damage. You have {} Healthpoints remaining! \n".format(self.enemy.damage, player.hp))
 		else:
+			# Current HP shown at the end of the fight as well as looting some nice gold
 			print(" Current Healthpoints: " + str(player.hp) + "\n")
 			if not self.gold_claimed:
 				self.gold_claimed = True
@@ -168,6 +176,7 @@ class Puzzle(MapTile):
 
 
 class InteractiveDoku(MapTile):
+	# Very long subclass. Used in the first row of World DSL for an easter egg-level of sorts
 	def __init__(self, x, y):
 		super().__init__(x, y)
 
@@ -176,7 +185,7 @@ class InteractiveDoku(MapTile):
 		player.atIDoku = True
 		x = self.x
 		y = self.y
-		#print(self.x)
+		# Room 1
 		if x == 0 and y == 0 and player.x == 0 and player.y == 0:
 			print("""
 	Willkommen zur iDoku von CharlesBottens_
@@ -198,6 +207,7 @@ class InteractiveDoku(MapTile):
 
 	Zurueck zum eigentlichen Spiel gelangt man mit 'c'.
 				""")
+		# Room 2
 		elif x == 1 and y == 0 and player.x == 1 and player.y == 0:
 			print("""
 	2. Lessons Learned:
@@ -219,6 +229,7 @@ class InteractiveDoku(MapTile):
 	liegt. Aber ich bevorzuge Teamarbeit über Soloarbeit!   
 
 				""")
+		# Room 3
 		elif x == 2 and y == 0 and player.x == 2 and player.y == 0:
 			print("\n")
 			print(world_dsl)
@@ -242,6 +253,7 @@ class InteractiveDoku(MapTile):
 	zufaellig befuellt.
 	
 				""")
+		# Room 4
 		elif x == 3 and y == 0 and player.x == 3 and player.y == 0:
 			print("""
 	4. Feedback aus Usability-Tests
@@ -269,6 +281,7 @@ class InteractiveDoku(MapTile):
 	  verwendet, um zum Einen den Text lesbarer zu machen, und zum anderen die "Actions" vom restlichen
 	  Schriftbild farblich zu trennen.
 				""")
+		# Room 5
 		elif x == 4 and y == 0 and player.x == 4 and player.y == 0:
 			print("""
 	5. Das Machine Learning-Modell von CharlesBottens_ selbst ausprobieren
@@ -276,6 +289,7 @@ class InteractiveDoku(MapTile):
 			user_input = input(" Give any text prompt from which you want to generate a sample (in English): ")
 			t = sample(400, user_input, 1)
 			print("\n" + t + "\n")
+		# Room 6
 		elif x == 5 and y == 0 and player.x == 5 and player.y == 0:
 			print(""" 
 	6. Beispiele von OpenAI lesen
@@ -359,11 +373,12 @@ class VictoryTile(MapTile):
 	def intro_text(self):
 		return """\n As you open the door you breath fresh air and realize that you finally made it out of this god forsaken place!"""
 
+# Where it gets the built world from world_building.py
 dsl_string = world_building.worldbuilder()
 
 world_dsl = """{}""".format(dsl_string)
 
-
+# Check if world_dsl has a Start and at least one victory, and wether all rows are equally long, in order to have a grid
 def is_dsl_valid(dsl):
 	if dsl.count("|ST|") != 1:
 		return False
@@ -377,13 +392,14 @@ def is_dsl_valid(dsl):
 			return False
 	return True
 
-
+#Dict for all the room-types
 tile_type_dict = {"VT": VictoryTile, "EN": EnemyTile, "ST": StartTile, "TT": TrapTile, "BT": StoryTile, "NP": npcTrader, "PU": Puzzle, "IN": InteractiveDoku, "BO": BossTile, "  ": None}
 
 world_map = []
 
 start_tile_location = None
 
+# Worldmap is parsed for game.py to use
 def parse_world_dsl():
 	if not is_dsl_valid(world_dsl):
 		raise SyntaxError("DSL is invalid!")
