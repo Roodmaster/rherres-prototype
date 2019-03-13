@@ -59,6 +59,7 @@ I'll use Anaconda as an example. After installing Anaconda, open your terminal, 
 
 - conda deactivate
 
+
 ## Tipps
 
 If you have other Python versions installed or are on a Mac, you might have to use "python3" and "pip3" when using those commands outside of your virtual environment.

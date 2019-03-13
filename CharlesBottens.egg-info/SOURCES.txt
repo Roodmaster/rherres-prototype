@@ -1,0 +1,7 @@
+README.md
+setup.py
+CharlesBottens.egg-info/PKG-INFO
+CharlesBottens.egg-info/SOURCES.txt
+CharlesBottens.egg-info/dependency_links.txt
+CharlesBottens.egg-info/requires.txt
+CharlesBottens.egg-info/top_level.txt
