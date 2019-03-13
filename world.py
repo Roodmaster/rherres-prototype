@@ -217,16 +217,15 @@ class InteractiveDoku(MapTile):
 
 	Waehrend den Projektphasen schwankt man immer irgendwo zwischen Gelassenheit und Panik.
 	Dabei konnte ich diesmal auf Diskussionen verzichten und musste keine Missverstaendnisse aus
-	dem Weg schaffen. Ausserdem war jede meiner Ideen "super"...
-	
-	Doch Teammitglieder haben auch ihre Vorteile. Im Endeffekt habe ich aktiven nach Feedback und
-	projektbezogene Gespräche gesucht, da mir das im Ein-Personen-Team gefehlt hat. Und
-	Missverstaendnisse sind auch eigentlich immer nur halb so schlimm. Vor allem hilft eine zweite
-	Meinung, die selbst in das Projekt involviert ist und eine weitere Perspektive hat, ungemein.
-	Vor allem um die vermeindlichen, "super" Ideen einzufangen.
+	dem Weg schaffen. Ausserdem war jede meiner Ideen 'super'.
+
+	Doch Teammitglieder haben auch ihre Vorteile. Im Endeffekt habe ich aktiv nach Feedback und
+	projektbezogenen Gespraechen gesucht, da mir das im Ein-Personen-Team gefehlt hat. Eine zweite
+	Meinung, die selbst in das Projekt involviert ist und eine weitere Perspektive hat, hilft 
+	ungemein. Vor allem um die vermeindlichen, 'super' Ideen einzufangen.
 
 	Ich habe mich gefreut ein Thema bearbeiten zu koennen, das mich interessiert und mir am Herzen
-	liegt. Aber ich bevorzuge Teamarbeit über Soloarbeit!   
+	liegt. Aber in Zukunft bevorzuge ich wieder Teamarbeit über Soloarbeit!
 
 				""")
 		# Room 3
